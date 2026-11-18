@@ -1,5 +1,6 @@
 out/
 build/
+bin/
 *.class
 .idea/
 .DS_Store
