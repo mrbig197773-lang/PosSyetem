@@ -4,5 +4,6 @@ public class Main {
         System.out.println("수정사항 반영 되는지 테스트");
         System.out.println("한번 더 테스트 ");
         System.out.println("진짜최종테스트");
+        System.out.println("군대가자.");
     }
 }
