@@ -1,9 +1,25 @@
+
+import product.Product;
+import product.GeneralProduct;
+import product.RestrictedProduct;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("편의점 POS 시스템 시작!");
-        System.out.println("수정사항 반영 되는지 테스트");
-        System.out.println("한번 더 테스트 ");
-        System.out.println("진짜최종테스트");
-        System.out.println("군대가자.");
+
+        Product cola = new GeneralProduct("101", "콜라", 2000, 20);
+        Product cigarette = new RestrictedProduct("999", "담배", 4500, 10);
+
+        System.out.println("=== 일반 상품 ===");
+        System.out.println("상품명: " + cola.getName());
+        System.out.println("할인 가능: " + cola.isDiscountable());
+        System.out.println("성인 인증 없이 판매: " + cola.canSell(false));
+
+        System.out.println();
+
+        System.out.println("=== 제한 상품 ===");
+        System.out.println("상품명: " + cigarette.getName());
+        System.out.println("할인 가능: " + cigarette.isDiscountable());
+        System.out.println("성인 인증 없이 판매: " + cigarette.canSell(false));
+        System.out.println("성인 인증 후 판매: " + cigarette.canSell(true));
     }
 }
