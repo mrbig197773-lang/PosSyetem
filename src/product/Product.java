@@ -35,7 +35,7 @@ public abstract class Product{
     }
 
     public boolean hasStock(int quantity){
-        return quantity < stock && quantity >0;
+        return quantity <= stock && quantity >0;
     }
 
     public void decreaseStock(int quantity){

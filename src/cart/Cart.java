@@ -18,7 +18,7 @@ public class Cart{
         for(int i=0;i<size;i++){
 
             if(items[i].getBarcode().equals(product.getBarcode())){
-                if(!items[i].hasStock(quantities[i]+1)){
+                if(items[i].hasStock(quantities[i]+1)==false){
                 throw new IllegalArgumentException("재고가 부족합니다.");
             }
 
@@ -34,7 +34,7 @@ public class Cart{
         }
 
         if(!product.hasStock(1)){
-            throw new IllegalAccessException("재고가 없습니다.");
+            throw new IllegalArgumentException("재고가 없습니다.");
         }
 
         items[size]=product;
@@ -60,16 +60,17 @@ public class Cart{
                     items[j]=items[j+1];
                     quantities[j]=quantities[j+1];
                 }
+            //맨 끝칸 null로 바꿔주고, 양도 줄여준다.
+            items[size-1]=null;
+            quantities[size-1]=0;
+
+            size--;
+
+            return;
 
             }
         }
-        //맨 끝칸 null로 바꿔주고, 양도 줄여준다.
-        items[size-1]=null;
-        quantities[size-1]=0;
-
-        size--;
-
-        return;
+        throw new IllegalArgumentException("장바구니에 없는 상품입니다.");
     }
 }
 
