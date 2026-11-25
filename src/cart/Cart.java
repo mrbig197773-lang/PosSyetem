@@ -51,4 +51,25 @@ public class Cart{
         }
         return 0;
     }
+    //삭제하려는 상품과 동일한걸 일단찾음
+    public void removeProduct(String barcode){
+        for(int i=0;i<size;i++){
+            if(items[i].getBarcode().equals(barcode)){
+                //찾고나면 걔 뒤에있는걸 하나씩 앞으로 땡겨온다
+                for(int j=i;j<size-1;j++){
+                    items[j]=items[j+1];
+                    quantities[j]=quantities[j+1];
+                }
+
+            }
+        }
+        //맨 끝칸 null로 바꿔주고, 양도 줄여준다.
+        items[size-1]=null;
+        quantities[size-1]=0;
+
+        size--;
+
+        return;
+    }
 }
+

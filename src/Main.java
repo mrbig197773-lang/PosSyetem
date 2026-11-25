@@ -1,25 +1,31 @@
 
 import product.Product;
 import product.GeneralProduct;
-import product.RestrictedProduct;
+import cart.Cart;
 
 public class Main {
     public static void main(String[] args) {
 
         Product cola = new GeneralProduct("101", "콜라", 2000, 20);
-        Product cigarette = new RestrictedProduct("999", "담배", 4500, 10);
+        Product snack = new GeneralProduct("102", "과자", 1500, 10);
+        Product milk = new GeneralProduct("103", "우유", 1800, 15);
 
-        System.out.println("=== 일반 상품 ===");
-        System.out.println("상품명: " + cola.getName());
-        System.out.println("할인 가능: " + cola.isDiscountable());
-        System.out.println("성인 인증 없이 판매: " + cola.canSell(false));
+        Cart cart = new Cart();
 
-        System.out.println();
+        cart.addProduct(cola);
+        cart.addProduct(snack);
+        cart.addProduct(milk);
 
-        System.out.println("=== 제한 상품 ===");
-        System.out.println("상품명: " + cigarette.getName());
-        System.out.println("할인 가능: " + cigarette.isDiscountable());
-        System.out.println("성인 인증 없이 판매: " + cigarette.canSell(false));
-        System.out.println("성인 인증 후 판매: " + cigarette.canSell(true));
+        System.out.println("=== 삭제 전 ===");
+        System.out.println("콜라: " + cart.getQuantity("101"));
+        System.out.println("과자: " + cart.getQuantity("102"));
+        System.out.println("우유: " + cart.getQuantity("103"));
+
+        cart.removeProduct("102");
+
+        System.out.println("=== 삭제 후 ===");
+        System.out.println("콜라: " + cart.getQuantity("101"));
+        System.out.println("과자: " + cart.getQuantity("102"));
+        System.out.println("우유: " + cart.getQuantity("103"));
     }
 }
