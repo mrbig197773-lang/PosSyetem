@@ -2,13 +2,17 @@ package product;
 
 public class GeneralProduct extends Product{
 
-    public GeneralProduct(String barcode, String name, int price, int stock){
+    private boolean discountable;
+
+    public GeneralProduct(String barcode, String name, int price, int stock,boolean discountable){
         super(barcode, name, price, stock);
+
+        this.discountable=discountable;
     }
 
     @Override 
     public boolean isDiscountable(){
-        return true;
+        return discountable;
     }
 
     @Override
